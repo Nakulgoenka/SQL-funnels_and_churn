@@ -1,0 +1,15 @@
+ select modal_text ,count(distinct user_id) from onboarding_modals
+ group by modal_text
+ order by modal_text asc;
+ 
+  select modal_text ,count(distinct case when ab_group='control'
+ then user_id
+ end) as'control_clicks',
+ count(distinct case when ab_group='variant'
+ then user_id
+ end) as 'variant_clicks' 
+ from onboarding_modals
+ group by modal_text
+ order by modal_text asc;
+ 
+ 
